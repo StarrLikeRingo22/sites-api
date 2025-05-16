@@ -16,13 +16,8 @@ const connectionString = process.env.MONGODB_URI
 
 siteService.initialize(connectionString).then(async() => {
   const count = await siteService.Site.countDocuments();
-  console.log("Total documents in collection:", count);
-    app.listen(HTTP_PORT, () => {
-      console.log(`Server running on http://localhost:${HTTP_PORT}`);
-    })
-
-    siteService.getAllSites(1, 200).then(sites => console.log(`Total sites: ${sites.length}`));
-    
+  console.log("Total documents in collection:", count); 
+  siteService.getAllSites(1, 200).then(sites => console.log(`Total sites: ${sites.length}`));
 })
 
 
@@ -95,3 +90,5 @@ app.delete('/api/sites/:id', async (req, res) => {
   }
 
 });
+
+module.exports = app;
