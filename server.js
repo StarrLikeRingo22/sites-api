@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const cors    = require('cors');
+const cors = require('cors');
 const SitesDB = require('./modules/sitesDB');
 const siteService = new SitesDB();
 
@@ -89,6 +89,10 @@ app.delete('/api/sites/:id', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 
+});
+
+app.use((req, res, next) => {
+  res.status(404).send("404 - We're unable to find what you're looking for.");
 });
 
 module.exports = app;
